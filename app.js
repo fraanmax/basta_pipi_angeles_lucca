@@ -1,14 +1,16 @@
 const categories = [
-  'Nombre de niña', 'Nombre de varón', 'Nombre de mascota', 'Comida', 'Fruta', 'Verdura', 'Golosina', 'Helado', 'Bebida', 'Postre',
-  'Algo que se come con cuchara', 'Algo que se come con la mano', 'Algo rico', 'Animal', 'Animal de granja', 'Animal salvaje', 'Animal que vuela', 'Animal que vive en el agua', 'Animal de cuatro patas', 'Animal pequeño',
-  'Animal grande', 'Animal que da miedo', 'Animal que te gustaría tener', 'Juguete', 'Cosa de la escuela', 'Cosa de la casa', 'Cosa de la cocina', 'Cosa del baño', 'Prenda de ropa', 'Algo que llevás en una mochila',
-  'Algo que encontrás en una plaza', 'Algo que hay en un dormitorio', 'Algo que usás todos los días', 'Personaje de dibujitos', 'Superhéroe o superheroína', 'Princesa', 'Personaje de película', 'Personaje de Disney', 'Personaje de anime', 'Villano',
-  'Personaje que te da risa', 'Personaje que te gustaría conocer', 'Personaje que te gustaría ser', 'País', 'Ciudad', 'Lugar de vacaciones', 'Lugar de la casa', 'Lugar donde jugar', 'Lugar donde hace frío', 'Lugar donde hace calor',
-  'Lugar donde te gustaría viajar', 'Lugar donde hay muchos animales', 'Lugar donde hay agua', 'Deporte', 'Juego', 'Juego de mesa', 'Algo que sirve para jugar', 'Algo que te gusta', 'Algo que no te gusta', 'Algo que te hace reír',
-  'Algo que te da miedo', 'Algo que te pone feliz', 'Algo que te gustaría tener', 'Algo que te gustaría aprender', 'Algo que te gustaría hacer', 'Algo que te gustaría comer', 'Algo que te gustaría regalar', 'Algo que hacés cuando estás aburrido', 'Algo que hacés antes de dormir', 'Algo que llevás de vacaciones',
-  'Algo que hay en una fiesta', 'Algo que hace ruido', 'Algo que tiene ruedas', 'Color', 'Algo de la naturaleza', 'Algo de la escuela', 'Algo de la casa', 'Algo de un viaje', 'Algo de la playa', 'Algo del campo',
-  'Algo del parque', 'Objeto redondo', 'Objeto cuadrado', 'Algo suave', 'Algo duro', 'Algo frío', 'Algo caliente', 'Algo que brilla', 'Algo que huele bien', 'Algo que huele mal',
-  'Algo que se puede abrir', 'Algo que se puede cerrar', 'Algo que se puede romper', 'Algo que se puede coleccionar', 'Algo que encontrás en la calle', 'Algo que hay en una tienda', 'Algo que llevás en el bolsillo', 'Algo que te ponés en la cabeza', 'Algo que tiene botones', 'Algo que se usa en invierno'
+  'Nombre de niña', 'Nombre de varón', 'Nombre de mascota', 'Nombre de superhéroe', 'Nombre de personaje de dibujos', 'Nombre que le pondrías a un bebé', 'Nombre que le pondrías a un perro', 'Nombre que le pondrías a un gato',
+  'Comida', 'Fruta', 'Verdura', 'Golosina', 'Chocolate', 'Helado', 'Postre', 'Bebida', 'Algo que te gusta comer', 'Algo que no te gusta comer', 'Algo que comerías en una fiesta', 'Algo que comerías en el cine',
+  'Algo que se come con cuchara', 'Algo que se come con la mano', 'Animal', 'Animal de granja', 'Animal salvaje', 'Animal que vuela', 'Animal que vive en el agua', 'Animal de cuatro patas', 'Animal pequeño', 'Animal grande',
+  'Animal que da miedo', 'Animal que te gustaría tener', 'Animal que corre rápido', 'Animal que hace un ruido divertido', 'Juguete', 'Juego', 'Juego de mesa', 'Videojuego', 'Algo con lo que jugarías afuera',
+  'Algo con lo que jugarías adentro', 'Algo que llevarías a una plaza', 'Algo que llevarías a la escuela', 'Personaje de dibujos animados', 'Superhéroe o superheroína', 'Princesa', 'Personaje de película',
+  'Personaje de Disney', 'Personaje de anime', 'Villano', 'Personaje que te hace reír', 'Personaje que te gustaría ser', 'Personaje con el que te gustaría ser amigo', 'Cosa de la escuela', 'Cosa que hay en una mochila',
+  'Cosa de la casa', 'Cosa de la cocina', 'Cosa del baño', 'Cosa que hay en un dormitorio', 'Prenda de ropa', 'Algo que te ponés en los pies', 'Algo que te ponés en la cabeza',
+  'Algo que usás todos los días', 'Algo que llevás en el bolsillo', 'Algo que tiene botones', 'Algo que tiene ruedas', 'Algo que se puede abrir', 'Algo que se puede cerrar', 'País', 'Ciudad',
+  'Lugar de vacaciones', 'Lugar donde hace mucho frío', 'Lugar donde hace mucho calor', 'Lugar donde hay agua', 'Lugar donde hay muchos animales', 'Lugar donde te gustaría viajar', 'Algo que encontrás en una plaza',
+  'Algo que encontrás en un parque', 'Algo que encontrás en la playa', 'Algo que encontrás en el campo', 'Algo que encontrás en la calle', 'Algo que encontrás en el cielo', 'Algo de la naturaleza',
+  'Algo que te hace reír', 'Algo que te da miedo', 'Algo que te pone feliz', 'Algo que te gusta mucho', 'Algo que no te gusta', 'Algo que te gustaría tener', 'Algo que te gustaría aprender',
+  'Algo que te gustaría hacer', 'Algo que te gustaría regalar', 'Algo que harías si fueras invisible', 'Algo que llevarías a una isla desierta', 'Algo que harías si pudieras volar'
 ];
 
 const app = document.querySelector('#app');
@@ -72,9 +74,9 @@ function render() {
   app.innerHTML = `
     <div class="page-shell">
       <header class="topbar">
-        <a class="brand" href="./" aria-label="Basta Familiar, inicio">
+        <a class="brand" href="./" aria-label="App By Franmax, inicio">
           <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
-          <span>Basta Familiar</span>
+          <span>App By Franmax</span>
         </a>
         <div class="top-actions">
           <button class="icon-button" type="button" data-action="help" aria-label="Cómo jugar">?</button>
@@ -84,8 +86,8 @@ function render() {
 
       <main class="main-content">
         <section class="intro" aria-labelledby="page-title">
-          <p class="eyebrow">Juego de palabras para compartir</p>
-          <h1 id="page-title">Una categoría.<br /><em>Mil respuestas.</em></h1>
+          <p class="eyebrow">Creado para Pipi, Angeles y Lucca</p>
+          <h1 id="page-title">App By<br /><em>Franmax</em></h1>
           <p class="lead">Sacá una tarjeta, pensá rápido y dejá que empiece la ronda.</p>
         </section>
 
@@ -97,7 +99,7 @@ function render() {
           <div class="card-body ${current ? 'has-category' : ''} ${isFinished ? 'is-finished' : ''}">
             <div class="card-stamp" aria-hidden="true">${isFinished ? '✓' : String(cardNumber).padStart(2, '0')}</div>
             <p class="card-kicker">${isFinished ? '¡Ronda terminada!' : current ? 'Respondan todos' : '¿Listos?'}</p>
-            <h2>${isFinished ? 'Salieron las 100 tarjetas.' : current || 'Sacá una tarjeta'}</h2>
+            <h2>${isFinished ? 'Salieron todas las tarjetas.' : current || 'Sacá una tarjeta'}</h2>
             <p class="card-hint">${isFinished ? 'Volvé a mezclar para jugar otra vez.' : current ? 'Cuando todos respondan, saquen la siguiente.' : 'La primera respuesta puede ser la más divertida.'}</p>
           </div>
           <div class="card-footer">
@@ -118,7 +120,7 @@ function render() {
           <div class="tip"><span class="tip-number">03</span><div><h3>Para todas las edades</h3><p>Categorías simples, familiares y algunas para reírse.</p></div></div>
         </section>
       </main>
-      <footer class="footer"><span>Basta Familiar</span><span>100 categorías para jugar sin pantallas complicadas.</span></footer>
+      <footer class="footer"><span>App By Franmax</span><span>Creado para Pipi, Angeles y Lucca.</span></footer>
     </div>
     <div class="modal-backdrop" data-action="close-help" hidden>
       <section class="help-modal" role="dialog" aria-modal="true" aria-labelledby="help-title">

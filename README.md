@@ -1,4 +1,4 @@
-# Basta Familiar
+# App By Franmax
 
 Juego familiar de categorías: 100 tarjetas aleatorias sin repetir, contador de progreso y diseño adaptable a celulares.
 

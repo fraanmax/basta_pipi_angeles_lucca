@@ -1,7 +1,7 @@
 {
-  "name": "Basta Familiar",
-  "short_name": "Basta",
-  "description": "Categorías para jugar en familia.",
+  "name": "App By Franmax",
+  "short_name": "Franmax",
+  "description": "Creado para Pipi, Angeles y Lucca.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
