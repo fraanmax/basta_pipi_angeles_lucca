@@ -15,6 +15,7 @@ const app = document.querySelector('#app');
 let deck = [];
 let current = null;
 let isDrawing = false;
+let confirmReset = false;
 
 function shuffle(items) {
   const result = [...items];
@@ -28,14 +29,29 @@ function shuffle(items) {
 function resetGame() {
   deck = shuffle(categories);
   current = null;
+  confirmReset = false;
   render();
+}
+
+function handleReset() {
+  const used = categories.length - deck.length;
+  if (used === 0 || confirmReset) {
+    resetGame();
+    return;
+  }
+  confirmReset = true;
+  render();
+  window.setTimeout(() => {
+    if (confirmReset) {
+      confirmReset = false;
+      render();
+    }
+  }, 3000);
 }
 
 function drawCard() {
   if (isDrawing || deck.length === 0) return;
   isDrawing = true;
-  const card = document.querySelector('.card');
-  card?.classList.remove('card-pop');
   window.setTimeout(() => {
     current = deck.pop();
     isDrawing = false;
@@ -48,17 +64,21 @@ function render() {
   const used = categories.length - available;
   const progress = Math.round((used / categories.length) * 100);
   const isFinished = available === 0 && current !== null;
+  const cardNumber = used;
+
+  const resetLabel = confirmReset ? '¿Seguro? Tocá de nuevo' : 'Empezar de nuevo';
+  const resetClass = confirmReset ? 'restart-button confirm' : 'restart-button';
 
   app.innerHTML = `
     <div class="page-shell">
       <header class="topbar">
-        <a class="brand" href="/" aria-label="Basta Familiar, inicio">
+        <a class="brand" href="./" aria-label="Basta Familiar, inicio">
           <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
           <span>Basta Familiar</span>
         </a>
         <div class="top-actions">
           <button class="icon-button" type="button" data-action="help" aria-label="Cómo jugar">?</button>
-          <button class="restart-button" type="button" data-action="reset"><span aria-hidden="true">↻</span> Nueva partida</button>
+          <button class="${resetClass}" type="button" data-action="reset"><span aria-hidden="true">↻</span> ${resetLabel}</button>
         </div>
       </header>
 
@@ -75,7 +95,7 @@ function render() {
             <span class="remaining-label">${available} ${available === 1 ? 'disponible' : 'disponibles'}</span>
           </div>
           <div class="card-body ${current ? 'has-category' : ''} ${isFinished ? 'is-finished' : ''}">
-            <div class="card-stamp" aria-hidden="true">${isFinished ? '✓' : current ? '01' : '00'}</div>
+            <div class="card-stamp" aria-hidden="true">${isFinished ? '✓' : String(cardNumber).padStart(2, '0')}</div>
             <p class="card-kicker">${isFinished ? '¡Ronda terminada!' : current ? 'Respondan todos' : '¿Listos?'}</p>
             <h2>${isFinished ? 'Salieron las 100 tarjetas.' : current || 'Sacá una tarjeta'}</h2>
             <p class="card-hint">${isFinished ? 'Volvé a mezclar para jugar otra vez.' : current ? 'Cuando todos respondan, saquen la siguiente.' : 'La primera respuesta puede ser la más divertida.'}</p>
@@ -112,7 +132,7 @@ function render() {
   `;
 
   document.querySelectorAll('[data-action="draw"]').forEach((button) => button.addEventListener('click', drawCard));
-  document.querySelectorAll('[data-action="reset"]').forEach((button) => button.addEventListener('click', resetGame));
+  document.querySelectorAll('[data-action="reset"]').forEach((button) => button.addEventListener('click', handleReset));
   document.querySelector('[data-action="help"]')?.addEventListener('click', () => {
     const modal = document.querySelector('.modal-backdrop');
     if (modal) modal.hidden = false;
@@ -126,4 +146,6 @@ function render() {
 }
 
 resetGame();
-if ('serviceWorker' in navigator) window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js'));
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js'));
+}

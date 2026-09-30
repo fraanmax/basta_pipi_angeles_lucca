@@ -36,6 +36,8 @@ button { cursor: pointer; }
 .icon-button:hover { background: var(--ink); color: var(--paper); transform: rotate(8deg); }
 .restart-button { border: 0; background: transparent; color: var(--ink); font-weight: 600; padding: 10px 0; transition: .2s ease; }
 .restart-button:hover { color: var(--coral-dark); }
+.restart-button.confirm { color: var(--coral-dark); font-weight: 700; animation: pulse 1s ease infinite; }
+@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .55; } }
 .restart-button span { display: inline-block; margin-right: 5px; font-size: 18px; vertical-align: -1px; }
 .main-content { padding: 82px 0 92px; }
 .intro { max-width: 690px; }
